@@ -11,11 +11,22 @@
 (function() {
     'use strict';
 
+    const setNahDog = () => {
+        const isHomePage = location.href.includes('twitter.com/home');
+        const forYouTabText = document.querySelector('[role=tab] > div > div > span');
+        const isForYouText = forYouTabText.innerText === 'For you';
+
+        if (isHomePage && isForYouText) {
+            forYouTabText.innerText = 'Nah, dog';
+        }
+    }
+
     const setFollowing = () => {
+        const isHomePage = location.href.includes('twitter.com/home');
         const forYouTab = document.querySelector('[role=tab] > div > div > div');
         const forYouTabIsActive = forYouTab.className.length > 30;
 
-        if (forYouTabIsActive) {
+        if (isHomePage && forYouTabIsActive) {
             const followingTab = [...document.querySelectorAll('[role=tab]')][1];
             followingTab.click();
             followingTab.focus();
@@ -27,6 +38,7 @@
 
     const cb = (mutList, obs) => {
         mutList.forEach((mut) => {
+            setNahDog();
             mut.type === 'childList' ? setFollowing() : null;
         });
     };
@@ -34,6 +46,4 @@
     const obs = new MutationObserver(cb);
 
     obs.observe(t, c);
-
-    setTimeout(() => { document.querySelector('[role=tab] > div > div > span').innerText = 'Nah, dog' }, 2000);
 })();
