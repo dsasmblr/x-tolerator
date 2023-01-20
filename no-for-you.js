@@ -1,6 +1,6 @@
 // ==UserScript==
-// @author       Stephen Chapman - Twitter: @Chapman | GitHub: dsasmblr
 // @name         No "For You" Tab on Twitter
+// @author       Stephen Chapman - Twitter: @Chapman | GitHub: dsasmblr
 // @version      0.1
 // @description  Always force the "Following" tab to be selected on the home page
 // @match        *://*.twitter.com/home
