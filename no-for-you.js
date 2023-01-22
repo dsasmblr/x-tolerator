@@ -3,7 +3,7 @@
 // @author       Stephen Chapman - Twitter: @Chapman | GitHub: dsasmblr
 // @version      0.1
 // @description  Always force the "Following" tab to be selected on the home page
-// @match        *://*.twitter.com/home
+// @match        *://*.twitter.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=twitter.com
 // @grant        none
 // ==/UserScript==
@@ -11,9 +11,12 @@
 (function() {
     'use strict';
 
+    const HOME_PAGE = 'twitter.com/home';
+    const FOR_YOU_DIV = '[role=tab] > div > div';
+
     const setNahDog = () => {
-        const isHomePage = location.href.includes('twitter.com/home');
-        const forYouTabText = document.querySelector('[role=tab] > div > div > span');
+        const isHomePage = location.href.includes(HOME_PAGE);
+        const forYouTabText = document.querySelector(`${FOR_YOU_DIV} > span`);
         const isForYouText = forYouTabText.innerText === 'For you';
 
         if (isHomePage && isForYouText) {
@@ -22,8 +25,8 @@
     }
 
     const setFollowing = () => {
-        const isHomePage = location.href.includes('twitter.com/home');
-        const forYouTab = document.querySelector('[role=tab] > div > div > div');
+        const isHomePage = location.href.includes(HOME_PAGE);
+        const forYouTab = document.querySelector(`${FOR_YOU_DIV} > div`);
         const forYouTabIsActive = forYouTab.className.length > 30;
 
         if (isHomePage && forYouTabIsActive) {
