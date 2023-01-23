@@ -17,6 +17,11 @@
     const setNahDog = () => {
         const isHomePage = location.href.includes(HOME_PAGE);
         const forYouTabText = document.querySelector(`${FOR_YOU_DIV} > span`);
+
+        if (!forYouTabText) {
+            return;
+        }
+
         const isForYouText = forYouTabText.innerText === 'For you';
 
         if (isHomePage && isForYouText) {
@@ -27,6 +32,11 @@
     const setFollowing = () => {
         const isHomePage = location.href.includes(HOME_PAGE);
         const forYouTab = document.querySelector(`${FOR_YOU_DIV} > div`);
+
+        if (!forYouTab) {
+            return;
+        }
+
         const forYouTabIsActive = forYouTab.className.length > 30;
 
         if (isHomePage && forYouTabIsActive) {
