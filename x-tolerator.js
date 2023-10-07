@@ -64,6 +64,8 @@
         document.querySelectorAll("[data-testid*='placementTracking']").forEach((x) => {
             x.closest("[data-testid='cellInnerDiv']").style.cssText = srOnly;
         });
+
+        document.querySelector("[aria-label='Subscribe to Premium']").style.cssText = srOnly;
     }
 
     const setMrow = () => {
