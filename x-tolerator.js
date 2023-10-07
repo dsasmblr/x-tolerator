@@ -72,8 +72,12 @@
     }
 
     const noAds = () => {
-        document.querySelectorAll("[data-testid*='placementTracking']").forEach((x) => {
-            x.closest("[data-testid='cellInnerDiv']").style.cssText = srOnly;
+        document.querySelectorAll("span").forEach((s) => {
+            const isAd = s.innerText === "Ad";
+
+            if (isAd) {
+                s.closest("[data-testid='cellInnerDiv']").style.cssText = srOnly;
+            }
         });
 
         const premium = document.querySelector("[aria-label='Subscribe to Premium']");
