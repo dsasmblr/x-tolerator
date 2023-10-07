@@ -52,13 +52,12 @@
         const isHomePage = location.href.includes(HOME_PAGE);
         const forYouTab = document.querySelector(`${FOR_YOU_DIV} > div`);
         const forYouTabText = document.querySelector(`${FOR_YOU_DIV} > span`);
+        const isForYouText = forYouTabText?.innerText === 'For you';
+        const forYouTabIsActive = forYouTab?.className.length > 30;
 
         if (!isHomePage || !forYouTab || !forYouTabText) {
             return;
         }
-
-        const isForYouText = forYouTabText?.innerText === 'For you';
-        const forYouTabIsActive = forYouTab?.className.length > 30;
 
         if (isForYouText) {
             forYouTabText.innerText = 'Nah, dog';
@@ -72,6 +71,12 @@
     }
 
     const noAds = () => {
+        const premium = document.querySelector("[aria-label='Subscribe to Premium']");
+
+        if (premium) {
+            premium.style.cssText = srOnly;
+        }
+
         document.querySelectorAll("span").forEach((s) => {
             const isAd = s.innerText === "Ad";
 
@@ -79,12 +84,6 @@
                 s.closest("[data-testid='cellInnerDiv']").style.cssText = srOnly;
             }
         });
-
-        const premium = document.querySelector("[aria-label='Subscribe to Premium']");
-
-        if (premium) {
-            premium.style.cssText = srOnly;
-        }
     }
 
     const setMrow = () => {
