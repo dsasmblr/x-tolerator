@@ -98,10 +98,9 @@
 
     const cb = (mutList, obs) => {
         mutList.forEach((mut) => {
-            setNahDog();
             noAds();
             setMrow();
-
+            setNahDog();
             mut.type === 'childList' ? setFollowing() : null;
         });
     };
